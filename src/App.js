@@ -1,18 +1,30 @@
-import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
 import Footer from "./components/Footer/Footer";
 import Navbar from "./components/Navigation/Navbar";
-import {BrowserRouter as Router, Route} from "react-router-dom";
-import ProfileGrid from "./components/Profile/ProfileGrid.jsx";
+import ProfileBody from "./components/ProfilePage/ProfileBody.jsx";
+import HomeBody from "./components/HomePage/HomeBody.jsx"
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 function App() {
 	return (
 		<>
+
 			<Router>
 				<Navbar />
-				<ProfileGrid />
+
+				<Route
+					component={ProfileBody}
+					path="/profile"
+					exact
+				/>
+				<Route
+					component={HomeBody}
+					path="/feed"
+					exact />
 				<Footer />
 			</Router>
+
 		</>
 	);
 }
