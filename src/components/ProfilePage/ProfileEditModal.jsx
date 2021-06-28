@@ -1,8 +1,7 @@
-import {Modal, Button, Form, closeButton} from "react-bootstrap";
+import {Modal, Form} from "react-bootstrap";
 import React, {Component} from "react";
-import { PostRequest } from "../Utils/api";
+import {PostRequest} from "../Utils/api";
 import "bootstrap/dist/css/bootstrap.min.css";
-
 
 const {REACT_APP_CLOUD_URL, REACT_APP_USER_ID} = process.env;
 const endpoint = `${REACT_APP_CLOUD_URL}/api/profile/${REACT_APP_USER_ID}`;
@@ -40,9 +39,9 @@ class EditProfile extends Component {
 			"PUT",
 			this.state.profile,
 			"Could not update profile"
-        );
-        this.props.hideProfileEditModal();
-        this.props.render()
+		);
+		this.props.hideProfileEditModal();
+		this.props.render();
 	};
 
 	render() {
@@ -97,7 +96,7 @@ class EditProfile extends Component {
 											onClick={() =>
 												this.setState({formerName: !this.state.formerName})
 											}
-											href="#"
+											href="/"
 										>
 											Add former name
 										</a>

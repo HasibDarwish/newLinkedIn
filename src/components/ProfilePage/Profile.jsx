@@ -16,7 +16,6 @@ export default class ProfileTop extends Component {
 		const render = this.props.render;
 		return (
 			<>
-				
 				{profile && (
 					<Container>
 						<div class="alert alert-light" role="alert">
@@ -28,7 +27,7 @@ export default class ProfileTop extends Component {
 										alt="profile_image"
 										onClick={() => this.setState({profileImageModal: true})}
 									/>
-									
+
 									<ProfileImageUpdateModal
 										modal={this.state.profileImageModal}
 										hideImageModal={() =>
@@ -43,7 +42,6 @@ export default class ProfileTop extends Component {
 											this.setState({profileEditModal: true})
 										}
 									/>
-									// profile edit modal section
 									<EditProfile
 										modal={this.state.profileEditModal}
 										render={() => render()}
@@ -52,7 +50,7 @@ export default class ProfileTop extends Component {
 										}
 									/>
 								</Col>
-								
+
 								<Col id="ProfileInfo" xs={12}>
 									<h3>
 										{profile.name} {profile.surname}
