@@ -56,7 +56,6 @@ class MyNav extends Component {
                 <InputGroup.Text
                   id="basic-addon3"
                   className="input-group-text"
-                  id="basic-addon3"
                   style={{ position: "absolute", maxWidth: "fit-content" }}
                 >
                   {

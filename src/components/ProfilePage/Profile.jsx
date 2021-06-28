@@ -1,131 +1,117 @@
 import {Component} from "react";
-import {Row, Col, Button} from "react-bootstrap";
+import {Container, Row, Col, Button, Dropdown} from "react-bootstrap";
 import PencilIcon from "../UseableComponents/Pencil.jsx";
-import LinkButton from "../UseableComponents/LinkButton.jsx";
-import DropdownButton from "../UseableComponents/DropdownButton.jsx";
-import UpdateProfileImg from "./ProfileImgModal";
-// import EditProfile from "./EditProfile";
-import "./Profile.css";
+import CarouselBadge from "../UseableComponents/Carousel.jsx";
+import ProfileImageUpdateModal from "./ProfileImgUpdateModal";
+import EditProfile from "./ProfileEditModal.jsx";
 
 export default class ProfileTop extends Component {
 	state = {
-		showModal: false,
-		formData: {},
-		uploadImageUrl: "",
-		editProfile: false,
-	};
-
-	handleShowModal = () => {
-		this.setState((state) => {
-			return {
-				showModal: !this.state.showModal,
-			};
-		});
-	};
-
-	handleFileUpload = (e) => {
-		e.preventDefault();
-		const file = e.currentTarget.files[0];
-		let form_data = new FormData();
-		form_data.append("profile", file);
-		this.setState((state) => {
-			return {
-				formData: form_data,
-			};
-		});
-	};
-
-	uploadImage = async () => {
-		try {
-			let newRes = await fetch(
-				`https://striveschool-api.herokuapp.com/api/profile/${this.props.profile._id}/picture`,
-				{
-					method: "POST",
-					headers: {
-						Authorization: process.env.REACT_APP_TOKEN,
-					},
-					body: this.state.formData,
-				}
-			);
-			if (newRes.ok) {
-				console.log("FileUploaded");
-			}
-		} catch (error) {
-			console.log("something went wrong");
-		}
+		profileImageModal: false,
+		profileEditModal: false,
 	};
 
 	render() {
+		const profile = this.props.data;
+		const render = this.props.render;
 		return (
 			<>
-				<div class="alert alert-light" role="alert">
-					<Row className="m-0 p-1 Profile">
-						<Col id="ProfileBackground" sx={12}>
-							<img
-								id="profileImage"
-								src={this.props.profile.image}
-								alt="profile_image"
-								onClick={this.handleShowModal}
-							/>
-							{/* <CameraIcon classname={"cameraIcon"} /> */}
-							{/* <EditProfile
-							editProfile={this.state.editProfile}
-							editProfileOff={() => this.setState({editProfile: false})}
-							editProfileOn={() => this.setState({editProfile: true})}
-							token={process.env.REACT_APP_TOKEN}
-						/> */}
-							<PencilIcon
-								classname={"Pencil"}
-								// editProfileOn={() => this.setState({editProfile: true})}
-							/>
-						</Col>
-						<Col id="ProfileInfo" xs={12}>
-							<h3>
-								{this.props.profile.name}
-								{console.log(this.props.profile.name)}
-								{this.props.profile.surname}
-							</h3>
-							<h5 style={{fontWeight: "400"}}>{this.props.profile.title}</h5>
-							<p className="d-flex align-items-center">
-								{this.props.profile.area}
-								{" - "}
-								{<LinkButton title={"500 connections"} />}
-								{" - "}
-								{<LinkButton title={"Contact info"} />}
-							</p>{" "}
-							<span className="d-flex flex-row">
-								<DropdownButton
-									Name="Open to"
-									Background="primary"
-									Border="primary"
-								/>
-								<DropdownButton
-									Name="Add profile section"
-									Background="outline-dark"
-									Border="dark"
-								/>
-								<Button
-									style={{borderRadius: "50px", marginRight: "10px"}}
-									variant="outline-dark"
-								>
-									More...
-								</Button>
-							</span>
-							<Row>{/* <CarouselBadge /> */}</Row>
-						</Col>
-					</Row>
-					<UpdateProfileImg
-						image={this.props.profile.image}
-						open={this.state.showModal}
-						onHandleShowModal={this.handleShowModal}
-						onHandleFileUpload={this.handleFileUpload}
-						uploadImageUrl={this.state.uploadImageUrl}
-						onUploadClick={this.uploadImage}
-					/>
-				</div>
+				
+				{profile && (
+					<Container>
+						<div class="alert alert-light" role="alert">
+							<Row className="m-0 p-1 Profile">
+								<Col id="ProfileBackground" sx={12}>
+									<img
+										id="profileImage"
+										src={profile.image}
+										alt="profile_image"
+										onClick={() => this.setState({profileImageModal: true})}
+									/>
+									
+									<ProfileImageUpdateModal
+										modal={this.state.profileImageModal}
+										hideImageModal={() =>
+											this.setState({profileImageModal: false})
+										}
+										profile={profile}
+										render={() => render()}
+									/>
+									<PencilIcon
+										classname={"Pencil"}
+										editProfileOn={() =>
+											this.setState({profileEditModal: true})
+										}
+									/>
+									// profile edit modal section
+									<EditProfile
+										modal={this.state.profileEditModal}
+										render={() => render()}
+										hideProfileEditModal={() =>
+											this.setState({profileEditModal: false})
+										}
+									/>
+								</Col>
+								
+								<Col id="ProfileInfo" xs={12}>
+									<h3>
+										{profile.name} {profile.surname}
+									</h3>
+									<h5 style={{fontWeight: "400"}}>{profile.title}</h5>
+									<p className="d-flex align-items-center">
+										<span style={{fontSize: "16px"}} className="me-2">
+											{profile.area}
+										</span>
+
+										<button
+											className="btn p-0 me-2"
+											style={{fontWeight: "bold"}}
+										>
+											500 connections
+										</button>
+										<button className="btn p-0" style={{fontWeight: "bold"}}>
+											Contact info
+										</button>
+									</p>
+									<span className="d-flex flex-row">
+										<Button
+											style={{
+												borderRadius: "50px",
+												marginRight: "10px",
+											}}
+											variant="primary"
+										>
+											Open to
+										</Button>
+										<Dropdown>
+											<Dropdown.Toggle
+												style={{
+													borderRadius: "50px",
+													marginRight: "10px",
+												}}
+												variant="outline-dark"
+												id="dropdown-basic"
+												border="dark"
+											>
+												{"Add profile section"}
+											</Dropdown.Toggle>
+										</Dropdown>
+										<Button
+											style={{borderRadius: "50px"}}
+											variant="outline-dark"
+										>
+											More...
+										</Button>
+									</span>
+									<Row>
+										<CarouselBadge />
+									</Row>
+								</Col>
+							</Row>
+						</div>
+					</Container>
+				)}
 			</>
 		);
 	}
 }
-
-

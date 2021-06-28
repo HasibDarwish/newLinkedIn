@@ -1,55 +1,11 @@
-.ProfileGrid{
+.ProfileGrid {
 	margin-top: 100px;
 }
-/* .Profile{
-	padding: 5px;
-	border:2px solid orange
-} */
 
-
-.Container {
+/* .Container {
 	height: 5vh;
 	background-color: orange;
-}
-
-#ProfileBackground {
-	position: relative;
-	background-image: url("https://source.unsplash.com/user/erondu/600x150");
-	height: 15vh;
-	margin-bottom: 65px;
-	background-repeat: no-repeat;
-	background-size: cover;
-}
-#profileImage {
-	width: 130px;
-	height: 130px;
-	border-radius: 50%;
-	border: 3px solid white;
-	position: absolute;
-	top: 112px;
-	left: 20px;
-}
-#profileImage:hover {
-	cursor: pointer;
-	opacity: 0.9;
-}
-
-#cameraIcon {
-	cursor: pointer;
-}
-
-.cameraIcon {
-	position: absolute;
-	top: 20px;
-	right: 20px;
-	background-color: white;
-	border-radius: 50%;
-	padding: 5px;
-	cursor: pointer;
-}
-.cameraIcon:hover {
-	opacity: 0.8;
-}
+} */
 
 .Pencil {
 	position: absolute;
@@ -70,32 +26,10 @@
 	opacity: 0.8;
 }
 
-.carousel {
-	position: relative;
-}
-
-.rec.rec-arrow-right {
+.Pencil {
 	position: absolute;
-	top: 20px;
-	right: -15px;
-	border: none;
-	border-radius: 0;
-}
-.rec.rec-arrow-left {
-	position: absolute;
-	top: 20px;
-	left: -15px;
-	border: none;
-	border-radius: 0;
-}
-
-.rec.rec-arrow {
-	width: 0px;
-	height: 0px;
-}
-.Container {
-	height: 5vh;
-	background-color: orange;
+	top: 210px;
+	right: 20px;
 }
 
 #ProfileBackground {
@@ -119,7 +53,6 @@
 
 #profileImage:hover {
 	cursor: pointer;
-	opacity: 0.9;
 }
 
 #cameraIcon {
@@ -139,76 +72,18 @@
 	opacity: 0.8;
 }
 
-.Pencil {
-	position: absolute;
-	top: 210px;
-	right: 20px;
-}
-
-.Pencil:hover {
-	border-radius: 50%;
-	background-color: rgba(231, 229, 229, 0.75);
-	opacity: 0.8;
-}
-
-.carousel {
-	position: relative;
-}
-
-.rec.rec-arrow-right {
-	position: absolute;
-	top: 90px;
-	right: 10px;
-	border: none;
-	border-radius: 0;
-}
-.rec.rec-arrow-left {
-	position: absolute;
-	top: 90px;
-	left: 620px;
-	border: none;
-	border-radius: 0;
-}
-
 .rec.rec-arrow {
 	width: 0px;
 	height: 0px;
 }
 
-button.sc-gtsrHT.hliWYQ.rec.rec-arrow.rec.rec-arrow-left,
-button.sc-gtsrHT.hliWYQ.rec.rec-arrow.rec.rec-arrow-right {
-	color: #000;
-	background-color: white;
-}
-
-button.sc-gtsrHT.hliWYQ.rec.rec-arrow.rec.rec-arrow-left:hover:enabled,
-button.sc-gtsrHT.hliWYQ.rec.rec-arrow.rec.rec-arrow-right:hover:enabled {
-	color: #000;
-	border-radius: 50%;
-}
-
 .rec-carousel-item {
 	margin: 5px;
 }
 
 .rec.rec-arrow:disabled {
-	visibility: hidden;
-}
-
-div.sc-fujyAs.bGFcTk.rec.rec-pagination {
-	display: none;
-}
-
-.rec-carousel-item {
-	margin: 5px;
-}
-
-.rec.rec-arrow:disabled {
-	visibility: hidden;
-}
-
-div.sc-fujyAs.bGFcTk.rec.rec-pagination {
-	display: none;
+	visibility: visible;
+	color: black;
 }
 
 .switch {

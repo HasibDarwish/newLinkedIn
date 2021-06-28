@@ -1,7 +1,6 @@
 import {Component} from "react";
 import Carousel from "react-elastic-carousel";
-import "../Profile/Profile.css";
-// import Box from "./Box";
+import "../ProfilePage/Profile.css";
 
  class CarouselBadge extends Component {
 	state = {
