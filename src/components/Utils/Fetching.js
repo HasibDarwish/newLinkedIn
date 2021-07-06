@@ -10,7 +10,7 @@ export const Fetching = async (endpoint, method, body, alertMessage) => {
         })
 
         if (res.ok) {
-            let data = res.json()
+            let data = await res.json()
             return data
         } else {
             console.log(res)
